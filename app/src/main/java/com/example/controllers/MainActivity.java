@@ -1,5 +1,6 @@
 package com.example.controllers;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -9,13 +10,21 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     ConstraintLayout    content;
     ImageView   imagen;
+    RadioButton radioHombre,radioMujer;
     CheckBox    chkCasado;
     Button      btnEnviar;
+    Spinner     spinIdioma;
+    TextView    txtUser;
+    EditText    editPass;
     SmsManager sms = SmsManager.getDefault();
 
 
@@ -31,8 +40,19 @@ public class MainActivity extends AppCompatActivity {
 
         }
         */
+        txtUser =   (TextView)findViewById(R.id.txtUser);
+        editPass=   (EditText) findViewById(R.id.editPass);
+
+           final String   nameUser    =  txtUser.getText().toString();
+           final String   passUser    =   editPass.getText().toString();
+
+
         btnEnviar    =(Button)findViewById(R.id.btnEnviar);
         chkCasado    =(CheckBox)findViewById(R.id.chkCasado);
+        radioHombre =(RadioButton)findViewById(R.id.radioHombre);
+        radioMujer =(RadioButton)findViewById(R.id.radioMujer);
+        spinIdioma  =   (Spinner)findViewById(R.id.spinIdioma);
+
 
 /*
         content =   (ConstraintLayout)findViewById(R.id.Content);
@@ -47,6 +67,23 @@ public class MainActivity extends AppCompatActivity {
                }else {
                    Log.i("Check baaaax:","Eres feliz");
                }
+
+
+               if (radioHombre.isChecked()){
+                   Log.e("Género","Masculino");
+                   Log.e("Idioma: ", spinIdioma.getSelectedItem().toString());
+
+               }else {
+                   Log.e("Género","Femenino");
+
+                   Log.e("Idioma: ", spinIdioma.getSelectedItem().toString());
+               }
+
+                Intent  intent  =   new Intent(getBaseContext(),segunda.class);
+                intent.putExtra("Nombre","Jorge");
+                intent.putExtra("Usuario",nameUser);
+                intent.putExtra("Password:",passUser);
+                startActivity(intent);
             }
         });
         /*
