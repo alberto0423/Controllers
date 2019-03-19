@@ -8,18 +8,31 @@ import android.widget.TextView;
 
 public class segunda extends AppCompatActivity {
 
+    TextView    txtUserReq,txtPassReq;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_segunda);
-        TextView    txt = null;
 
-    Bundle bulto    =   this.getIntent().getExtras();
-    String  nombre  =   bulto.getString("Usuario");
-    String  pass    =   bulto.getString("Password");
-    if (nombre  == nombre && pass==pass){
+        txtUserReq =   (TextView)findViewById(R.id.textResult);
+        txtPassReq =    (TextView)findViewById(R.id.txtPassRequest);
+        //Datos almacenados de usuarios
+        String nameUserBD   =   "Albert";
+        String passUserBD   =   "Alberto.23";
+        //Nuevas variables para alamacenar los datos obtenidos de primer activitie
+        String nameUserRequest;
+
+        //
+        Bundle bulto    =   this.getIntent().getExtras();
+        String  nombre  =   bulto.getString("Usuario");
+        String  pass    =   bulto.getString("Password");
+
+    if (nombre  ==  nameUserBD && pass==passUserBD){
         String  request =   bulto.toString();
-        txt.setText(nombre);
+        txtUserReq.setText(nombre);
+        txtPassReq.setText(pass);
+        //txt.setText(nombre);
 
     }else {
         Intent intent  =   new Intent(getBaseContext(),tercera.class);

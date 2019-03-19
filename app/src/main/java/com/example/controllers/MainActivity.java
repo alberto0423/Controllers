@@ -23,8 +23,7 @@ public class MainActivity extends AppCompatActivity {
     CheckBox    chkCasado;
     Button      btnEnviar;
     Spinner     spinIdioma;
-    TextView    txtUser;
-    EditText    editPass;
+    EditText    editPass,txtUser     ;
     SmsManager sms = SmsManager.getDefault();
 
 
@@ -40,12 +39,11 @@ public class MainActivity extends AppCompatActivity {
 
         }
         */
-        txtUser =   (TextView)findViewById(R.id.txtUser);
+        txtUser =   (EditText)findViewById(R.id.txtUser);
         editPass=   (EditText) findViewById(R.id.editPass);
 
-           final String   nameUser    =  txtUser.getText().toString();
-           final String   passUser    =   editPass.getText().toString();
-
+        final String nameUser =   txtUser.getText().toString();
+        final String passUser =   txtUser.getText().toString();
 
         btnEnviar    =(Button)findViewById(R.id.btnEnviar);
         chkCasado    =(CheckBox)findViewById(R.id.chkCasado);
@@ -82,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent  intent  =   new Intent(getBaseContext(),segunda.class);
                 intent.putExtra("Nombre","Jorge");
                 intent.putExtra("Usuario",nameUser);
-                intent.putExtra("Password:",passUser);
+                intent.putExtra("Password",passUser);
                 startActivity(intent);
             }
         });
