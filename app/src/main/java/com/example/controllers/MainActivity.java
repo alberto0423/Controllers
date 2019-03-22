@@ -6,6 +6,7 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.telephony.SmsManager;
+import android.text.Editable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,23 +43,56 @@ public class MainActivity extends AppCompatActivity {
         */
         txtUser =   (EditText)findViewById(R.id.txtUser);
         editPass=   (EditText) findViewById(R.id.editPass);
+        final Editable nameUser   =   txtUser.getText();
+        final Editable passUser   =   txtUser.getText();
+        final String nameUserBD   =   new String("Alberto");
+        final String passUserBD   =   new String("Alberto.23");
 
-        final String nameUser =   txtUser.getText().toString();
-        final String passUser =   txtUser.getText().toString();
 
-        btnEnviar    =(Button)findViewById(R.id.btnEnviar);
-        chkCasado    =(CheckBox)findViewById(R.id.chkCasado);
-        radioHombre =(RadioButton)findViewById(R.id.radioHombre);
-        radioMujer =(RadioButton)findViewById(R.id.radioMujer);
-        spinIdioma  =   (Spinner)findViewById(R.id.spinIdioma);
+        btnEnviar       =(Button)findViewById(R.id.btnEnviar);
+        chkCasado       =(CheckBox)findViewById(R.id.chkCasado);
+        radioHombre     =(RadioButton)findViewById(R.id.radioHombre);
+        radioMujer      =(RadioButton)findViewById(R.id.radioMujer);
+        spinIdioma      =(Spinner)findViewById(R.id.spinIdioma);
+
+
+        btnEnviar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (txtUser.getText().toString().equals(nameUserBD) && editPass.getText().toString().equals(passUserBD)){
+                    Intent  intent  =   new Intent(getBaseContext(),segunda.class);
+                    intent.putExtra("Name",nameUser);
+                    intent.putExtra("Pass",editPass.getText().toString());
+                    startActivity(intent);
+                    Log.i("Correcto","El valor obtenido es:" + " " + nameUser + " " + editPass.getText().toString());
+                }else {
+
+                    Intent  intent  =   new Intent(getBaseContext(),tercera.class);
+                    intent.putExtra("Error","Hubo un error,verifique");
+                    startActivity(intent);
+                    Log.i("Error","Hubo un error" + editPass.getText().toString());
+                }
+
+            }
+        });
+
+
+
+
 
 
 /*
         content =   (ConstraintLayout)findViewById(R.id.Content);
         content.setBackgroundColor(Color.BLUE);
         imagen  =   (ImageView)findViewById(R.id.chica);
+
 */
+
+/*
         btnEnviar.setOnClickListener(new View.OnClickListener() {
+
+
             @Override
             public void onClick(View v) {
                if (chkCasado.isChecked()){
@@ -77,13 +112,20 @@ public class MainActivity extends AppCompatActivity {
                    Log.e("Idioma: ", spinIdioma.getSelectedItem().toString());
                }
 
+
                 Intent  intent  =   new Intent(getBaseContext(),segunda.class);
                 intent.putExtra("Nombre","Jorge");
                 intent.putExtra("Usuario",nameUser);
                 intent.putExtra("Password",passUser);
-                startActivity(intent);
+
+
             }
+
+
+
+
         });
+        */
         /*
         imagen.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
