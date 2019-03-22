@@ -1,6 +1,8 @@
 package com.example.controllers;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -10,12 +12,18 @@ import android.widget.TextView;
 public class segunda extends AppCompatActivity {
 
     TextView    txtUserReq,txtPassReq;
+    ConstraintLayout  content2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_segunda);
+
+        content2    =   (ConstraintLayout)findViewById(R.id.Content2);
+        content2.setBackgroundColor(Color.rgb(10,199,241));
+
         txtUserReq  =   (TextView)findViewById(R.id.textWelcome);
+        txtUserReq.setTextColor(Color.DKGRAY);
 
 
         Bundle  bundle  =   this.getIntent().getExtras();

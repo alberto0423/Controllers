@@ -24,7 +24,8 @@ public class MainActivity extends AppCompatActivity {
     CheckBox    chkCasado;
     Button      btnEnviar;
     Spinner     spinIdioma;
-    EditText    editPass,txtUser     ;
+    EditText    editPass,txtUser;
+    ConstraintLayout    contraint;
     SmsManager sms = SmsManager.getDefault();
 
 
@@ -41,8 +42,10 @@ public class MainActivity extends AppCompatActivity {
 
         }
         */
-        txtUser =   (EditText)findViewById(R.id.txtUser);
-        editPass=   (EditText) findViewById(R.id.editPass);
+        txtUser     =   (EditText)findViewById(R.id.txtUser);
+        editPass    =   (EditText) findViewById(R.id.editPass);
+        contraint   =   (ConstraintLayout)findViewById(R.id.Content);
+        contraint.setBackgroundColor(Color.rgb(10,199,241));
         final Editable nameUser   =   txtUser.getText();
         final Editable passUser   =   txtUser.getText();
         final String nameUserBD   =   new String("Alberto");
